@@ -1,1 +1,1 @@
-# DasturiyInjiniring311-22 Nurafshon filial
+# DasturiyInjiniring311-22 Hasanov Abror
