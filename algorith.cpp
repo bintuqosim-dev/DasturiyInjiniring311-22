@@ -24,10 +24,7 @@ int main() {
     cin >> num;
 
     // Bir xonali sonlarni tekshirish
-    if (num >= 0 && num < 10) {
-        cout << "Xatolik: Bir xonali son kiritildi. Iltimos, ikki yoki undan ortiq xonali son kiriting." << endl;
-        return 1; // Dasturdan xatolik bilan chiqish
-    }
+    
 
     if (isPalindrome(num)) {
         cout << num << " palindromik son." << endl;
