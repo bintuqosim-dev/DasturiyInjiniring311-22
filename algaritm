@@ -1,0 +1,17 @@
+class Solution {
+   public static String removeOuterParentheses(String s) {
+    StringBuilder result = new StringBuilder();
+    int balance = 0;
+    for (char c : s.toCharArray()) {
+        if (c == '(' && balance > 0) {
+            result.append(c);
+        }
+        if (c == ')' && balance > 1) {
+            result.append(c);
+        }
+        balance += (c == '(') ? 1 : -1;
+    }
+    return result.toString();
+}
+
+}
