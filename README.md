@@ -1,1 +1,1 @@
-# DasturiyInjiniring311-22 Otajonov Jamshid push qilib ko'rdi
+# DasturiyInjiniring311-22 Nurafshon filial
