@@ -1,0 +1,43 @@
+#include <iostream>
+void merge(int* arr, int left, int mid, int right) {
+    int i = left, j = mid + 1, k = 0;
+    int temp[right - left + 1];
+    // Ikkita bo'lakni birlashtirish
+    while (i <= mid && j <= right) {
+        if (arr[i] <= arr[j]) {
+            temp[k++] = arr[i++];
+        } else {
+            temp[k++] = arr[j++];
+        }
+    }
+    // Chap bo'lakdagi qolgan elementlarni ko'chirish
+    while (i <= mid) {
+        temp[k++] = arr[i++];
+    }
+    // O'ng bo'lakdagi qolgan elementlarni ko'chirish
+    while (j <= right) {
+        temp[k++] = arr[j++];
+    }
+    // Qayta asosiy massivi tartiblangan qilib yozish
+    for (int m = left; m <= right; m++) {
+        arr[m] = temp[m - left];
+    }
+}
+void mergeSort(int* arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2; // o'rtani aniqlash
+        mergeSort(arr, left, mid); // chap qismni tartiblash
+        mergeSort(arr, mid + 1, right); // o'ng qismni tartiblash
+        merge(arr, left, mid, right); // ikki qismini birlashtirish
+    }
+}
+int main() {
+    int arr[] = {5, 2, 4, 6, 1, 3};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    mergeSort(arr, 0, size - 1); // Massivni tartiblash
+    for (int i = 0; i < size; i++) {
+        std::cout << arr[i] << " "; // Tartiblangan massivni chiqarish
+    }
+    std::cout << std::endl;
+    return 0;
+}
