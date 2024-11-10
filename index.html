@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juftlik yig'indisini topish</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        input, button {
+          background-color: #04AA6D;
+          border: none;
+          color: white;
+          padding: 16px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Massiv va kerakli qiymatni kiriting</h2>
+        <input type="text" id="arrayInput" placeholder="Massiv: masalan, 1, 2, 3, 4, 5">
+        <input type="number" id="targetInput" placeholder="Berilgan qiymat">
+        <button onclick="findPair()">Tekshirish</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function findPair() {
+            const arr = document.getElementById('arrayInput').value.split(',').map(Number);
+            const target = Number(document.getElementById('targetInput').value);
+            let found = false;
+
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[i] + arr[j] === target) {
+                        document.getElementById('result').innerText = `Juftlik topildi:  (${arr[i]}, ${arr[j]})`;
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) break;
+            }
+
+            if (!found) {
+                document.getElementById('result').innerText = 'Berilgan qiymatga teng juftlik topilmadi.';
+            }
+        }
+      </script>
+</body>
+</html>
