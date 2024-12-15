@@ -1,0 +1,203 @@
+import java.util.*;
+
+class Student {
+    private static int idCounter = 1;
+    private int id;
+    private String name;
+    private String group;
+
+    public Student(String name) {
+        this.id = idCounter++;
+        this.name = name;
+        this.group = "No Group";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + ", Name: " + name + ", Group: " + group;
+    }
+}
+
+class User {
+    private String username;
+    private String password;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+}
+
+public class LearningCenter {
+    private List<User> users = new ArrayList<>();
+    private List<Student> students = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
+
+    public void signUp() {
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                System.out.println("Username already exists!");
+                return;
+            }
+        }
+
+        users.add(new User(username, password));
+        System.out.println("Sign up successful!");
+    }
+
+    public boolean signIn() {
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                System.out.println("Sign in successful!");
+                return true;
+            }
+        }
+
+        System.out.println("Invalid credentials!");
+        return false;
+    }
+
+    public void addStudent() {
+        System.out.print("Enter student name: ");
+        String name = scanner.nextLine();
+        students.add(new Student(name));
+        System.out.println("Student added successfully!");
+    }
+
+    public void assignGroup() {
+        System.out.print("Enter student ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.print("Enter group name: ");
+        String group = scanner.nextLine();
+
+        for (Student student : students) {
+            if (student.getId() == id) {
+                student.setGroup(group);
+                System.out.println("Group assigned successfully!");
+                return;
+            }
+        }
+
+        System.out.println("Student not found!");
+    }
+
+    public void changeGroup() {
+        assignGroup();
+    }
+
+    public void listStudents() {
+        if (students.isEmpty()) {
+            System.out.println("No students found.");
+        } else {
+            for (Student student : students) {
+                System.out.println(student);
+            }
+        }
+    }
+
+    public void deleteStudent() {
+        System.out.print("Enter student ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        for (Iterator<Student> iterator = students.iterator(); iterator.hasNext(); ) {
+            Student student = iterator.next();
+            if (student.getId() == id) {
+                iterator.remove();
+                System.out.println("Student deleted successfully!");
+                return;
+            }
+        }
+
+        System.out.println("Student not found!");
+    }
+
+    public void menu() {
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Sign Up");
+            System.out.println("2. Sign In");
+            System.out.println("3. Add Student");
+            System.out.println("4. Assign Group");
+            System.out.println("5. Change Group");
+            System.out.println("6. List Students");
+            System.out.println("7. Delete Student");
+            System.out.println("8. Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    signUp();
+                    break;
+                case 2:
+                    if (signIn()) {
+                        System.out.println("Welcome to the system!");
+                    }
+                    break;
+                case 3:
+                    addStudent();
+                    break;
+                case 4:
+                    assignGroup();
+                    break;
+                case 5:
+                    changeGroup();
+                    break;
+                case 6:
+                    listStudents();
+                    break;
+                case 7:
+                    deleteStudent();
+                    break;
+                case 8:
+                    System.out.println("Goodbye!");
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        LearningCenter learningCenter = new LearningCenter();
+        learningCenter.menu();
+    }
+}
