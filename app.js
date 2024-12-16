@@ -1,42 +1,43 @@
-// Massivning faktor balli ushbu massivning barcha elementlarining EKUK va EKUB mahsuloti sifatida aniqlanadi.
-// Undan ko'pi bilan bitta elementni olib tashlaganingizdan so'ng maksimal omil ballini qaytaring  
-// E'tibor bering , ikkalasi ham
-// EKUK
-// va
-// EKUB
-// bitta raqamning o'zi raqamdir va bo'sh massivning omil balli 0 ga teng.
-
-function EKUB(a, b) {    
-    while (b) {
-        [a, b] = [b, a % b];    
+const buttonsEl = document.querySelectorAll("button");
+const inputEl = document.querySelector("#natija");
+let isResultDisplayed = false;
+for (let i = 0; i < buttonsEl.length; i++) {
+    buttonsEl[i].addEventListener("click", () => {
+        const buttonPressed = buttonsEl[i].textContent;
+        if (buttonPressed === "C") {
+            natijatoza();
+        } else if (buttonPressed === '=') {
+            natija();
+        } else {
+            if (isResultDisplayed) {
+                inputEl.value = "";
+                isResultDisplayed = false;
+            }
+            if (isValidInput(buttonPressed)) {
+                hisob(buttonPressed);
+            }
+        }
+    });
+}
+function natijatoza() {
+    inputEl.value = "";
+    isResultDisplayed = false;
+}
+function natija() {
+    inputEl.value = evaluateExpression(inputEl.value);
+    isResultDisplayed = true;
+}
+function evaluateExpression(expression) {
+    try {
+        return eval(expression);
+    } catch (error) {
+        return 'Invalid Expression';
     }
-    return a;
 }
-function EKUK(a, b) {
-    return (a * b) / EKUB(a, b);
+function hisob(buttonPressed) {
+    inputEl.value += buttonPressed;
 }
-function umumiyEKUB(arr) {
-    return arr.reduce((acc, num) => EKUB(acc, num));
+function isValidInput(input) {
+    const validChars = /^[0-9+\-*/.]+$/;
+    return validChars.test(input);
 }
-function umumiyEKUK(arr) {
-    return arr.reduce((acc, num) => EKUK(acc, num));
-}
-function maxArrFunc(array) {
-    const n = array.length;
-    if (n === 0) return 0; 
-    if (n === 1) return array[0] * array[0]; 
-
-    let maxResult = 0;
-
-    for (let i = 0; i < n; i++) {
-        const newArray = [...array.slice(0, i), ...array.slice(i + 1)];        
-        const currentEKUB = umumiyEKUB(newArray);
-        const currentEKUK = umumiyEKUK(newArray);        
-        const result = currentEKUB * currentEKUK;
-        maxResult = Math.max(maxResult, result);
-    }
-    return maxResult;
-}
-
-const array = [1,2,3,4,5];
-console.log("Natija " + maxArrFunc(array) + " ga teng."); 
