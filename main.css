@@ -1,0 +1,334 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root{
+    --bg-header:white;
+    --color-icon:#000;
+    --navbar-color:#837D88;
+    --modal-bg:#2C2830;
+    --menu-bg:white;
+    --color-shadow: rgba(14, 13, 13, 0.1);
+}
+.mode {
+    --bg-header:#000;
+    --color-icon:white;
+    --navbar-color:white;
+    --modal-bg:#e4e1ea;
+    --menu-bg:#F3F3F3;
+    --color-shadow: rgba(255, 255, 255, 0.507);
+}
+
+body{
+    font-family: cursive;
+    background: var(--bg-header);
+}
+.site-header{
+    padding: 20px 0;
+    box-shadow: 0px 4px 20px 5px var(--color-shadow);
+    position: sticky;
+    top: 0;
+    background: var(--bg-header);
+}
+.container{
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__logo-link{
+    font-weight: bolder;
+    font-size: 22px;
+    color: var(--color-icon);
+    text-shadow:  0 0 2px black;
+}
+.header__mode-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.header__mode-btn{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
+    font-size: 21px;
+    border: none;
+    background: transparent;
+    padding: 10px 0;
+    color: var(--color-icon);
+}
+.header__like-btn, .header__basket-btn{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border-radius: 50%;
+    color: var(--color-icon);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+
+
+.hero-section{
+    padding: 40px 0;
+}
+.hero__top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero__input, .hero__select{
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    background: transparent;
+    box-shadow: 0px 4px 20px 5px var(--color-shadow);
+    border-color: var(--color-icon);
+    color: var(--color-icon);
+}
+input::placeholder{
+    color: var(--color-icon);   
+}
+.hero__select > option{
+    background: var(--bg-header);
+}
+.hero__countries{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 20px;
+}
+.hero__item{
+    width: 350px;
+    padding: 10px;
+    border-radius: 10px;
+    background: transparent;
+    box-shadow: 0px 4px 20px 5px var(--color-shadow);
+    color: var(--color-icon);
+}
+.hero__name{
+    font-weight: bolder;
+    font-size: 22px;
+    color: var(--color-icon);
+    margin-bottom: 10px;
+}
+.hero__population{
+    font-weight: bolder;
+    font-size: 17px;
+    color: var(--color-icon);
+}
+.hero__region{
+    font-weight: bolder;
+    font-size: 17px;
+    color: var(--color-icon);
+}
+.hero__capital{
+    font-weight: bolder;
+    font-size: 17px;
+    color: var(--color-icon);
+    margin-bottom: 15px;
+}
+.hero__like-basket-more{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.modal-wrapper{
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+}
+.modal{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 60%;
+    height: 50%;
+    background-color: grey;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.close{
+    position: absolute;
+    background:black;
+    color: red;
+    border-radius: 3px;
+    border: none;
+    top: -22px;
+    right: -10px;
+}
+.open-modal{
+    display: block;
+}
+.modal__img-wrapper{
+    width: 59%;
+}
+.modal__img-wrapper > .hero__img{
+    height: 100%;
+}
+.modal__content-wrapper{
+    padding: 10px;
+    border-radius: 10px;
+    background:var(--bg-header);
+    width: 39%;
+}
+.like{
+    color: red;
+    background:transparent;
+    border: none;
+}
+.dislike{
+    background:transparent;
+    border: none;
+}
+.basket{
+    border: none;
+    background: transparent;
+    color: var(--color-icon);
+}
+.close{
+    width: 30px;
+    height: 30px;
+    font-size: 32px;
+    background: red;
+    color: black;
+    text-align: center;
+}
+
+.header__add-country{
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 25px;
+    width: 110px;
+    background: teal;
+    color: white;
+    cursor: pointer;
+    
+    &:hover{
+        box-shadow: 0 0 2px 2px #333;
+    }
+}
+.hero__basic-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-card{
+    width: 550px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
+}
+.form-card > label > input{
+    padding: 10px;
+    border-radius: 10px;
+    width: 300px;
+    border: none;
+}
+.form-card > label > input::placeholder{
+    font-size: 17px;
+}
+.form-card > label{
+    font-size: 17px;
+}
+.addbtn{
+    width: 500px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: teal;
+    color: var(--bg-header);
+    font-size: 18px;
+    border: none;
+}
+.hero__updatedeleteBtn{
+    display: flex;
+    gap: 10px;
+}
+.hero__updatedeleteBtn > button{
+    border: none;
+    background: transparent;
+}
+.updateform-card{
+    width: 550px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
+}
+.updateform-card > label > input{
+    padding: 10px;
+    border-radius: 10px;
+    width: 300px;
+    border: none;
+}
+.updateform-card > label > input::placeholder{
+    font-size: 17px;
+}
+.updateform-card > label{
+    font-size: 17px;
+}
+.updateaddbtn{
+    width: 500px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: teal;
+    color: var(--bg-header);
+    font-size: 18px;
+    border: none;
+}
+.delete-wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+.delete-wrapper > div > button{
+    padding: 10px;
+    width: 150px;
+    margin-top: 20px;
+    background-color: red;
+    color: var(--bg-header);
+    border: none;
+    border-radius: 10px;
+}
+.delete-wrapper > div > button:first-child{
+    background-color: #1565c0;
+}
+.updateBtnIMg{
+    color: var(--color-icon);
+}
+.deleteBtnIMg{
+    color: var(--color-icon);
+}
