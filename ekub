@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+// EKUBni hisoblaydigan funksiya (Evklid algoritmi)
+int ekub(int a, int b) {
+    while (b != 0) {
+        int qoldiq = a % b;
+        a = b;
+        b = qoldiq;
+    }
+    return a;
+}
+int main() {
+    int son1, son2;
+    cout << "Birinchi sonni kiriting: ";
+    cin >> son1;
+    cout << "Ikkinchi sonni kiriting: ";
+    cin >> son2;
+    int natija = ekub(son1, son2);
+    cout << son1 << " va " << son2 << " sonlarining EKUBi: " << natija << endl;
+    return 0;
+}
