@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+    // To'g'ri to'rtburchakning o'lchamlari
+    double uzunlik, kenglik;
+    cout << "To'g'ri to'rtburchakning uzunligini kiriting: ";
+    cin >> uzunlik;
+    cout << "To'g'ri to'rtburchakning kengligini kiriting: ";
+    cin >> kenglik;
+
+    // To'g'ri to'rtburchak yuzasi
+    double tortburchak_yuzi = uzunlik * kenglik;
+
+    // To'rtburchak ichiga sig'adigan doira (radius - eng kichik tomonning yarmi)
+    double doira_radius = min(uzunlik, kenglik) / 2.0;
+    double doira_yuzi = M_PI * pow(doira_radius, 2);
+
+    // Doira ichiga sig'adigan teng tomonli uchburchak
+    double uchburchak_yuzi = (sqrt(3) / 4) * pow(2 * doira_radius, 2);
+
+    // Natijalarni chiqarish
+    cout << "\nNatijalar:" << endl;
+    cout << "1. To'g'ri to'rtburchakning yuzi: " << tortburchak_yuzi << endl;
+    cout << "2. Doiraning radiusi: " << doira_radius << endl;
+    cout << "   Doiraning yuzi: " << doira_yuzi << endl;
+    cout << "3. Teng tomonli uchburchakning yuzi: " << uchburchak_yuzi << endl;
+
+    return 0;
+}
