@@ -1,0 +1,24 @@
+def ekub(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def ekuk(a, b):
+    return abs(a * b) // ekub(a, b)
+
+# Foydalanuvchidan sonlarni olish
+try:
+    a = int(input("Birinchi sonni kiriting: "))
+    b = int(input("Ikkinchi sonni kiriting: "))
+    
+    # Musbat sonlarni tekshirish
+    if a <= 0 or b <= 0:
+        print("Sonlar musbat bo'lishi kerak!")
+        exit()
+
+    # Hisoblash va natija chiqarish
+    print(f"{a} va {b} sonlarining EKUBi: {ekub(a, b)}")
+    print(f"{a} va {b} sonlarining EKUKi: {ekuk(a, b)}")
+
+except ValueError:
+print("Faqat butun son kiriting!")
