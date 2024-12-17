@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+class Payment 
+{
+private:
+    double amount;
+    std::string currency;
+public:
+    Payment(double amt, const std::string &curr) : amount(amt), currency(curr) {}
+    void process_payment() 
+    {
+        std::cout << std::fixed << std::setprecision(2);
+        std::cout << "To'lovni qayta ishlash: " << amount << " " << currency << "." << std::endl;
+        if (amount <= 0) 
+        {
+            std::cout << "Xatolik: To'lov miqdori 0 dan katta bo'lishi kerak." << std::endl;
+        } else 
+        {
+            std::cout << "To'lov muvaffaqiyatli amalga oshirildi!" << std::endl;
+        }
+    }
+};
+
+int main() 
+{
+    double amount;
+    std::string currency;
+    std::cout << "To'lov miqdorini kiriting: ";
+    std::cin >> amount;
+    std::cout << "Valyutani kiriting (masalan, USD, EUR): ";
+    std::cin >> currency;
+    Payment payment(amount, currency);
+    payment.process_payment();
+    return 0;
+}
